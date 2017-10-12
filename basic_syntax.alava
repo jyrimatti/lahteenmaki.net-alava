@@ -18,9 +18,9 @@ let
   stillTrue : bool
   stillTrue = id bool true
 
-  -- multiple nested lambdas can be combined (syntax sugar) and variables annotated
+  -- multiple nested lambdas can be combined (syntax sugar)
   someFunc : Type -> bool -> bool
-  someFunc = \a (b: bool) . b 
+  someFunc = \a b . b 
 
   -- Data types:
 
