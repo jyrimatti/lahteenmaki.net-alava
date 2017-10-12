@@ -20,8 +20,11 @@ let
 
   
   -- Regular function:
+
   id : (t:Type) -> t -> t
   id = \t. \x. x
+
+
 
   -- Dependent function:
   Person : Type
@@ -43,6 +46,7 @@ let
 
 
   -- Dependent record:
+
   boolOrPersonWrapper : bool -> Type
   boolOrPersonWrapper (A: bool) = { boolOrPerson: (if A bool Person) }
 
@@ -78,10 +82,11 @@ let
   succ : Nat -> Nat
   succ = \n. \x. \f. \xx. f (n x f xx)
 
+  -- this isn't actually quite correct, whoops...
   pred : Nat -> Nat
   pred = \n. \x. \f. \xx. n ((x->x) -> x) (\g. \h. h (g f)) (\u. xx) (\u. u) 
 
-
+  -- type with only a single inhabitant "Unit_"
   Unit : Type
   Unit = {}
 
@@ -89,6 +94,7 @@ let
   Void : Type
   Void = (A:Type) -> A
 
+  -- maybe a bad name... but "just some type and a value"
   QED : Type
   QED = { foo: bool }
   qed : QED
@@ -127,6 +133,8 @@ let
 
   -- dependent vectors:
 
+  -- a.k.a. "indexed type" (?), where the type is "indexed" with a value
+  -- How to type empty vectors? Let's determine types based on length!
   Vector : Nat -> Type -> Type
   Vector (length: Nat) (E:Type) = { head: (if (isZero length) Unit E), tail: (if (isZero length) Unit (Vector (pred length) E)) }
 
@@ -134,18 +142,19 @@ let
   emptyVec : Vector zero bool
   emptyVec = Vector_ zero bool { head = Unit_, tail = Unit_ }
 
-  singletonVec : (E: bool) -> Vector one bool
+  singletonVec : bool -> Vector one bool
   singletonVec = \e. Vector_ one bool { head = e, tail = emptyVec }
 
-  head : (n: Nat) -> (proof: (assert (not (isZero n)))) -> Vector n bool -> bool
-  head = \n p vec. true -- ugh, cannot destructure records yet...
+  -- function to return the first element of a non-empty vector
+  head : (n: Nat) -> Vector n bool -> (proof: (assert (not (isZero n)))) -> bool
+  head = \n vec p. true -- ugh, cannot destructure records yet...
 
   headOfSingletonVec : bool
-  headOfSingletonVec = head one qed (singletonVec true)
+  headOfSingletonVec = head one (singletonVec true) qed
 
   -- none of these can be constructed:
   --headOfEmptyVec : bool
-  --headOfEmptyVec = head zero qed emptyVec
-  --headOfEmptyVec = head one qed emptyVec
+  --headOfEmptyVec = head zero emptyVec qed
+  --headOfEmptyVec = head one emptyVec qed
 in
   bool

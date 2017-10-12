@@ -1,7 +1,7 @@
 code size summary per package:
 
 aeson-1.1.1.0-qZHvK9aXmI9MwRfV5XYds:11730
-alava-1.0-6hZS5tWmVVCKu27k5tEZjV:2096217
+alava-1.0-6hZS5tWmVVCKu27k5tEZjV:2127913
 async-2.1.1-Hsq5soziw99EVYB6krkZzm:6441
 base:                    492579
 blaze-html-0.9.0.1-3gwBSm4ksXyIIIXUlKuaTr:4070
@@ -16,7 +16,7 @@ ghcjs-prim-0.1.0.0-GUpdXu72Ynv3kgdbcUykWj:11013
 http-types-0.9.1-9xlkohdmH2GFpays4oGfDB:484
 integer-gmp:             66980
 integer-logarithms-1.0.2-GnS00EJ2BHW1pgq9lJYSmk:2518
-main:                    143938
+main:                    143939
 monad-logger-0.3.25-9fu5ze1xNP2LcyE1BddXpv:5625
 scientific-0.3.4.10-EtUJmirwR7O2ywfwFSZWGY:28845
 template-haskell:        294
@@ -37,7 +37,7 @@ alava-1.0-6hZS5tWmVVCKu27k5tEZjV
     Environment:                        45464
     Equal:                              144294
     Error:                              2763
-    HtmlPrint:                          262181
+    HtmlPrint:                          293877
     PrettyPrint:                        421880
     SimpleParser:                       317854
     Substitution:                       27648
@@ -165,7 +165,7 @@ integer-logarithms-1.0.2-GnS00EJ2BHW1pgq9lJYSmk
     Math.NumberTheory.Logarithms:       2518
 
 main
-    Main:                               143938
+    Main:                               143939
 
 monad-logger-0.3.25-9fu5ze1xNP2LcyE1BddXpv
     Control.Monad.Logger:               5625
@@ -206,5 +206,5 @@ vector-0.11.0.0-7TM2aXkm7ud3lQdMTxCwFV
 
 
 
-packed metadata: 488887
+packed metadata: 492095
 
